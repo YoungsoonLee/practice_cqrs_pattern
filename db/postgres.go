@@ -39,11 +39,10 @@ func (r *PostgresRepository) ListMeows(ctx context.Context, skip uint64, take ui
 	meows := []schema.Meow{}
 	for rows.Next() {
 		meow := schema.Meow{}
-		if err := rows.Scan(&meow.ID, &meow.Body, &meow.CreatedAt); err == nil {
+		if err = rows.Scan(&meow.ID, &meow.Body, &meow.CreatedAt); err == nil {
 			meows = append(meows, meow)
 		}
 	}
-
 	if err = rows.Err(); err != nil {
 		return nil, err
 	}

@@ -6,7 +6,7 @@ import (
 
 type EventStore interface {
 	Close()
-	PublicMeowCreated(meow schema.Meow) error
+	PublishMeowCreated(meow schema.Meow) error
 	SubscribeMeowCreated() (<-chan MeowCreatedMessage, error)
 	OnMeowCreated(f func(MeowCreatedMessage)) error
 }
@@ -21,8 +21,8 @@ func Close() {
 	impl.Close()
 }
 
-func PublicMeowCreated(meow schema.Meow) error {
-	return impl.PublicMeowCreated(meow)
+func PublishMeowCreated(meow schema.Meow) error {
+	return impl.PublishMeowCreated(meow)
 }
 
 func SubscribeMeowCreated() (<-chan MeowCreatedMessage, error) {

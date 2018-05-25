@@ -33,7 +33,7 @@ func (e *NatsEventStore) Close() {
 	close(e.meowCreatedChan)
 }
 
-func (e *NatsEventStore) PublicMeowCreated(meow schema.Meow) error {
+func (e *NatsEventStore) PublishMeowCreated(meow schema.Meow) error {
 	m := MeowCreatedMessage{meow.ID, meow.Body, meow.CreatedAt}
 	data, err := e.writeMessage(&m)
 	if err != nil {
