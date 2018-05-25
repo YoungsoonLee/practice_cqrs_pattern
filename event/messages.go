@@ -11,3 +11,7 @@ type MeowCreatedMessage struct {
 	Body      string
 	CreatedAt time.Time
 }
+
+func (m *MeowCreatedMessage) Key() string {
+	return "meow.created"
+}
